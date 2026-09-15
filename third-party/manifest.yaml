@@ -1,0 +1,50 @@
+schema: 1
+
+upstreams:
+  - name: everest
+    repository: https://github.com/EVerest/everest.git
+    ref: main
+    path: third-party/everest
+    role: ev-charging-edge-stack
+    upstream_license: Apache-2.0
+
+  - name: openevse-esp32
+    repository: https://github.com/OpenEVSE/openevse_esp32_firmware.git
+    ref: master
+    path: third-party/openevse-esp32
+    role: evse-wifi-gateway-reference
+    upstream_license: GPL-3.0
+
+  - name: openevse-controller
+    repository: https://github.com/OpenEVSE/open_evse.git
+    ref: master
+    path: third-party/openevse-controller
+    role: evse-safety-controller-reference
+    upstream_license: GPL-3.0
+
+  - name: evtivity-csms
+    repository: https://github.com/EVtivity/evtivity-csms.git
+    ref: main
+    path: third-party/evtivity-csms
+    role: csms-reference
+    upstream_license: BUSL-1.1
+
+  - name: evtivity-csms-helm
+    repository: https://github.com/EVtivity/evtivity-csms-helm.git
+    ref: main
+    path: third-party/evtivity-csms-helm
+    role: csms-kubernetes-deployment-reference
+    upstream_license: verify-upstream
+
+  - name: evtivity-mobile-app
+    repository: https://github.com/EVtivity/evtivity-mobile-app.git
+    ref: main
+    path: third-party/evtivity-mobile-app
+    role: driver-mobile-app-reference
+    upstream_license: verify-upstream
+
+integration:
+  rule: upstream-first
+  modifications: keep-in-ifa-overlay
+  credentials: never-commit
+  production_deployment: requires-license-review
